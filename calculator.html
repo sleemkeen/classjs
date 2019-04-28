@@ -22,8 +22,7 @@
 
 	<br> <br>
 
-	<button id="submit" onclick="submit();">submit</button>
-	<button id="submit" onclick="clear();">clear</button>
+	<button id="submit" onclick="cleared();">clear</button>
 	<button id="multiply" value="*" onclick="getval('*')">x</button>
 	<button id="percent" value="%" onclick="getval('%')">%</button>
 	<button id="divide" value="/" onclick="getval('/')">/</button>
@@ -56,6 +55,11 @@
 		}
 		function deleted(){
 
+		}
+		
+		function cleared(){
+		   screen.value = 0;
+		   // console.log('cleared');
 		}
 
 	</script>
