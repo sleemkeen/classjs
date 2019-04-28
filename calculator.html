@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vaniila</title>
+</head>
+<body>
+	
+	<input type="text" style="width: 600px; height: 100px;" name="output" id="output"> <br> <br>
+
+	<button id="submit" onclick="getval(1);">1</button>
+	<button id="submit" onclick="getval(2);">2</button>
+	<button id="submit" onclick="getval(3);">3</button>
+	<button id="submit" onclick="getval(4);">4</button>
+	<button id="submit" onclick="getval(5);">5</button>
+	<button id="submit" onclick="getval(6);">6</button>
+	<button id="submit" onclick="getval(7);">7</button>
+
+	<br> <br>
+
+	<button id="divide" value="/" onclick="getval('/')">/</button>
+	<button id="del" value="del" onclick="deleted(del)">DEL</button>
+
+	<br> <br>
+
+	<button id="submit" onclick="submit();">submit</button>
+	<button id="submit" onclick="clear();">clear</button>
+	<button id="multiply" value="*" onclick="getval('*')">x</button>
+	<button id="percent" value="%" onclick="getval('%')">%</button>
+	<button id="divide" value="/" onclick="getval('/')">/</button>
+	<button id="del" value="del" onclick="deleted(del)">DEL</button>
+	<button id="equal" value="=" onclick="getval('=')">=</button>
+	<button id="substrct" value="-" onclick="getval('-')">-</button>
+	<button id="plus" value="+" onclick="getval('+')">+</button>
+
+
+
+
+
+
+
+	<script type="text/javascript" src="js/framework.js"></script>
+	<script type="text/javascript">
+
+		var screen=$id('output');
+		screen.value = 0;
+		// console.log(screen);
+		function getval(a){
+			getvalue = screen.value += a;
+			if(a=="="){
+				let questarray = getvalue.match(/[^\d()]+|[\d.]+/g);
+				for (var i = 0; i < questarray.length; i++) {
+					console.log(questarray[i]); //you can figure it out your self now cheers!!!!
+				}
+				// questarray);
+			}
+		}
+		function deleted(){
+
+		}
+
+	</script>
+</body>
+</html>

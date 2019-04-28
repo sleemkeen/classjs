@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+/////change the file extension to .html//////
+Mini Calculator by Ogbonna Vitalis, specially dedicated to my 
+Mentor, Nnamdi, He made me get my hands dirty..lol.
+Osita, He makes me think..
+Christy,Her zeal motivates me..
+And to all my colleagues at Genesys.. I love you all
+-->
+	<title>Mini Cal</title>
+	<style type="text/css">
+		body{
+			margin:0px;
+			padding:0px; 
+		}
+		#outer-wrapper{
+			width:100%;
+			height:580px;
+			background-color:#2f2f2f;
+			padding-top:60px;
+		
+		}
+		#inner-wrapper{
+			margin:auto;
+			width:430px;
+			height:450px;
+			background-color: pink;
+			}
+		#screen{
+			
+			width: 336px;
+		    height: 60px;
+		    margin: auto;
+		    margin-left: 44px;
+		    margin-top: 35px;
+		    font-size: 50px;
+		    text-align: right;
+		    padding-right: 5px;
+			border-radius: 3px;
+		}
+		#button-show{
+			margin-left:23px;
+			padding: 20px; 
+		}
+		#button-show button{
+			width:50px;
+			height: 40px;
+			margin-right: 20px;
+			margin-bottom: 20px;
+			border-top: 3px;
+			border-radius: 3px;
+
+		}
+		#button-show button#b0{
+			width:124px;
+		}
+
+		#button-show button#equal{
+			height: 100px;
+			float: right;
+			margin-right: 22px;
+		}
+		button:hover{
+			background-color: blue;
+			border:none;
+		}
+		button{
+			color: black;
+		}
+		div p{
+			text-align: center;
+			color: blue;
+			text-transform:uppercase;
+		}
+
+	</style>
+	<script>
+
+		var firstpart =0;
+		var secondpart = "0";
+		var op= 0;
+		var dot=0;
+		
+		function numbers(value){
+			
+			//wherever this functon is called, get the value of what is on the screen
+			var screen=document.getElementById("screen");
+
+			//I used top down approach to code this, read from the elseif statement to enable easy understanding  
+			//check if the = sign has been pressed. the variable value is where anything that is pressed is stored. it is passed through the function number()
+			if(value=="=")
+			{
+				//split the input using the split function, which returns it as an array 
+				var all=screen.value.split(" ")
+				firstpart=parseFloat(all[0]);
+				op=all[1];
+				secondpart=parseFloat(all[2]);
+				
+				var screen=document.getElementById("screen");
+		
+				if (secondpart==0) 
+				{
+					screen.value="division by zero!"
+				}
+				switch(op)
+				{   
+
+					case '+':
+						result = firstpart + secondpart;
+						screen.value= result;
+						break;
+					case '-':
+						result = firstpart - secondpart;
+						screen.value= result;
+						break;
+					case '*':
+						result = firstpart*secondpart;
+						screen.value= result;
+						break;
+					case '/':
+						result = firstpart / secondpart;
+						screen.value= result;
+
+						break;
+					case '%':
+						result = firstpart % secondpart;
+						screen.value= result;
+						break;
+					default:
+
+					break;
+				}
+			}
+
+			//if the equals sign wasnt pressed,then the following will be evaluated.
+			// checks for what is on the screen and what is pressd
+			else if(screen.value =="0" && value=="0")
+			{
+				return null;
+			}
+
+			//it checks for what is on the screen and what is pressed
+			else if(screen.value=="0" && !((value=="*" || value=="/" )|| ((value =="+"|| value=="-")|| (value=="%"))))
+			{
+				screen.value=value;
+				//secondpart+=value;
+			}
+			//if actually a number was pressed, it will save it on an already decleared variable and on the screen
+			else if(!((value=="*" || value=="/" )||((value =="+"|| value=="-")|| (value=="%"))))
+			{
+				screen.value+=value;
+				//secondpart+=screen.value;
+			}
+
+			//when eventually an operation is pressed,it will build this sting as say 2  *  2 with spaces in between to help me split the array
+			else if (op=="0" && ((value=="*" || value=="/" )|| ((value =="+"|| value=="-")|| (value=="%"))))
+			{
+			//
+			//building the string
+			screen.value+=" ";
+			screen.value+=value;
+			screen.value+=" ";
+			op=value;
+			}
+			
+			else
+			{
+				return;
+			}
+		}
+
+		function deleted(del){
+			var screen=document.getElementById("screen");
+			screen.value='';
+			op=0;
+			del=0;
+			var firstpart ="0";
+			var secondpart = "0";
+			var dot=0;
+			//console.log(secondpart);
+			
+		}
+			
+		function dots(dt){
+			//var op= 0;
+			if (dot== 0){
+			var screen=document.getElementById("screen");
+			screen.value+=dt;
+
+			// i changed the value of dot to avoid pressing it two times 
+			dot="recoded"
+			}
+			else
+			{
+				//returns an empty stuff if you have pressed dot for the first time
+				return;
+			}
+		}
+
+		
+	</script>
+</head>
+<body>
+<div id="outer-wrapper">
+	<div id="inner-wrapper">
+	<div id ="screen-show">
+		<input type="text" name="screen" value="0"  id="screen" placeholder="0" disabled="true">
+	</div>
+	<div id="button-show">
+		<button id="7" value="7" onclick="numbers(7)">7</button>
+		<button id="8" value="8" onclick="numbers(8)">8</button>
+		<button id="9" value="9" onclick="numbers(9)">9</button>
+		<button id="divide" value="/" onclick="numbers('/')">/</button>
+		<button id="del" value="del" onclick="deleted(del)">DEL</button>
+		<br>
+		<button id="6" value="6" onclick="numbers(6)">6</button>
+		<button id="5" value="5" onclick="numbers(5)">5</button>
+		<button id="4" value="4" onclick="numbers(4)">4</button>
+		<button id="multiply" value="*" onclick="numbers('*')">x</button>
+		<button id="percent" value="%" onclick="numbers('%')">%</button>
+		<br>
+		<button id="3" value="3" onclick="numbers(3)" >3</button>
+		<button id="2" value="2" onclick="numbers(2)">2</button>
+		<button id="1" value="1" onclick="numbers(1)">1</button>
+		<button id="substrct" value="-" onclick="numbers('-')">-</button>
+		<button id="equal" value="=" onclick="numbers('=')">=</button>
+		<br>
+		<button id="b0" value="0" onclick="numbers(0)">0</button>
+		<button id="dot" value="." onclick="dots('.')">.</button>
+		<button id="add" value="+" onclick="numbers('+')">+</button>
+	</div>
+	<div><p>vita!</p></div>
+	</div>
+	
+</div>
+
+</body>
+</html>
