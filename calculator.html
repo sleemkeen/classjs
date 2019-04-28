@@ -14,6 +14,8 @@
 	<button id="submit" onclick="getval(5);">5</button>
 	<button id="submit" onclick="getval(6);">6</button>
 	<button id="submit" onclick="getval(7);">7</button>
+	<button id="submit" onclick="getval(9);">9</button>
+	<button id="submit" onclick="getval(0);">0</button>
 
 	<br> <br>
 
@@ -46,6 +48,7 @@
 		function getval(a){
 			getvalue = screen.value += a;
 			if(a=="="){
+
 				let questarray = getvalue.match(/[^\d()]+|[\d.]+/g);
 				for (var i = 0; i < questarray.length; i++) {
 					console.log(questarray[i]); //you can figure it out your self now cheers!!!!
