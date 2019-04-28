@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vaniila</title>
+</head>
+<body>
+	<p class="demo">hi</p>
+	<p id="slim">color</p>
+	
+
+	<div><p>testing</p></div>
+
+	<input type="fname" name="firstname" id="fname"> <br> <br>
+
+	<input type="text" style="width: 600px; height: 100px;" name="output" id="output"> <br> <br>
+
+	<button id="submit" onclick="getval(1);">1</button>
+	<button id="submit" onclick="getval(2);">2</button>
+	<button id="submit" onclick="getval(3);">3</button>
+	<button id="submit" onclick="getval(4);">4</button>
+	<button id="submit" onclick="getval(5);">5</button>
+	<button id="submit" onclick="getval(6);">6</button>
+	<button id="submit" onclick="getval(7);">7</button>
+
+	<br> <br>
+
+
+	<button id="submit" onclick="submit();">submit</button>
+	<button id="submit" onclick="clear();">clear</button>
+
+
+
+<script type="text/javascript" src="js/framework.js"></script>
+<script type="text/javascript">
+	$class('demo').innerHTML = 'hhh'; //selector by class
+	$class('demo').style.color = '#ccc'; //selector by class
+	$id('fname').value = 'pppp'; // selector by id
+	// $select('#fname').value
+	$select('div').style.background = 'red'; // selector by tagname
+    //console.log(add(1,2,4,4));
+    // console.log()
+    //$hide($class('demo'))
+	
+
+	function submit(){
+		$hide($class('demo'));
+	}
+
+	//
+	function getval(h){
+		$select('#output').value = h;
+		console.log(h);
+	}
+
+
+
+	// console.log(cscjs.getclass('demo'));
+	// console.log(myFather.name());
+
+</script>
+</body>
+</html>

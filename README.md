@@ -1,6 +1,7 @@
 Feature
 
 Objective
+
 Write less achieve more
 
 Note
